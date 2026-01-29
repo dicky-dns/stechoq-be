@@ -1,0 +1,47 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: stechoq_app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    ports:
+      - "8001:8000"
+    depends_on:
+      - postgres
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      DB_CONNECTION: pgsql
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: stechoq_db
+      DB_USERNAME: stechoq_user
+      DB_PASSWORD: secret
+    networks:
+      - app_network
+
+  postgres:
+    image: postgres:16
+    container_name: stechoq_db
+    restart: unless-stopped
+    ports:
+      - "5440:5432" 
+    environment:
+      POSTGRES_DB: stechoq_db
+      POSTGRES_USER: stechoq_user
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+volumes:
+  pgdata:
+
+networks:
+  app_network:
+    driver: bridge
