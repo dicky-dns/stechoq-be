@@ -19,6 +19,7 @@ Pastikan di PC/laptop sudah terinstall:
 
 * Docker
 * Docker Compose
+* Git
 
 ---
 
@@ -32,17 +33,31 @@ cd <folder-project>
 #jalankan docker compose
 docker compose up -d --build
 
-#buat .env
+#cek status
+docker compose ps
+
+#Jalankan composer install
+docker compose exec app composer install --no-interaction --prefer-dist
+
+#NOTE: jika terdapat error:
+#fatal: detected dubious ownership in repository at '/var/www...'
+#Jalankan :
+docker compose exec app git config --global --add safe.directory /var/www
+
+#jika tidak error, skip saja
+
+
+#Buat .env
 copy .env.example menjadi .env
 
-#Jalankan composer install & atur ownership
-docker exec app composer install --no-interaction --prefer-dist
+#Izinkan permission folder
 sudo chown -R 33:33 storage bootstrap/cache
 
 
+
 #jalankan app key generate dan migrasi & seeder
-docker exec app php artisan key:generate
-docker exec app php artisan migrate --seed
+docker compose exec app php artisan key:generate
+docker compose exec app php artisan migrate --seed
 
 
 #Done ✅

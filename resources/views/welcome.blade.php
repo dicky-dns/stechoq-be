@@ -50,6 +50,7 @@
     <ul class="list-disc list-inside text-gray-300">
       <li>Docker</li>
       <li>Docker Compose</li>
+      <li>Git</li>
     </ul>
     <hr class="border-gray-700 my-4">
   </section>
@@ -63,19 +64,31 @@
 
         cd &lt;folder-project&gt;
 
-        <span class="text-gray-400"># jalankan docker compose</span>
+        <span class="text-gray-400"># Jalankan docker compose</span>
         docker compose up -d --build
 
-        <span class="text-gray-400"># buat .env</span>
+        <span class="text-gray-400">#Cek status</span>
+        docker compose ps
+
+
+        <span class="text-gray-400"># Jalankan composer install</span>
+        docker exec compose app composer install --no-interaction --prefer-dist
+
+        <span class="text-gray-400">#NOTE: jika terdapat error:</span>
+        <span class="text-gray-400">#fatal: detected dubious ownership in repository at '/var/www...'</span>
+        <span class="text-gray-400">#Jalankan :</span>
+        docker compose exec app git config --global --add safe.directory /var/www
+        <span class="text-gray-400">#jika tidak error, skip saja</span>
+
+        <span class="text-gray-400"># Buat .env</span>
         copy .env.example menjadi .env
 
-        <span class="text-gray-400"># Jalankan composer install & atur ownership</span>
-        docker exec app composer install --no-interaction --prefer-dist
+        <span>#Izinkan permission folder</span>
         sudo chown -R 33:33 storage bootstrap/cache
 
         <span class="text-gray-400"># jalankan app key generate dan migrasi & seeder</span>
-        docker exec app php artisan key:generate
-        docker exec app php artisan migrate --seed
+        docker exec compose app php artisan key:generate
+        docker exec compose app php artisan migrate --seed
 
         <span class="text-gray-400"># Done ✅</span>
         <span class="text-gray-400"># Jalankan pada postman / Insomnia base url http://localhost:8001</span>
