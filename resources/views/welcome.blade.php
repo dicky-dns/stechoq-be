@@ -72,7 +72,7 @@
 
 
         <span class="text-gray-400"># Jalankan composer install</span>
-        docker exec compose app composer install --no-interaction --prefer-dist
+        docker compose exec app composer install --no-interaction --prefer-dist
 
         <span class="text-gray-400">#NOTE: jika terdapat error:</span>
         <span class="text-gray-400">#fatal: detected dubious ownership in repository at '/var/www...'</span>
@@ -87,8 +87,8 @@
         sudo chown -R 33:33 storage bootstrap/cache
 
         <span class="text-gray-400"># jalankan app key generate dan migrasi & seeder</span>
-        docker exec compose app php artisan key:generate
-        docker exec compose app php artisan migrate --seed
+        docker compose exec app php artisan key:generate
+        docker compose exec app php artisan migrate --seed
 
         <span class="text-gray-400"># Done ✅</span>
         <span class="text-gray-400"># Jalankan pada postman / Insomnia base url http://localhost:8001</span>
