@@ -56,59 +56,61 @@
 
   <section class="mb-6">
     <h2 class="text-2xl font-bold mb-2">🚀 Quick Start & Setup</h2>
-    <pre class="bg-gray-800 p-4 rounded-lg overflow-x-auto relative">
+    <pre class="bg-gray-800 rounded-lg overflow-x-auto relative">
       <button class="absolute top-2 right-2 bg-gray-700 text-gray-100 px-2 py-1 rounded cursor-pointer text-sm hover:bg-gray-600" onclick="copyCode(this)">Copy</button>
-<code class="text-green-400">
-  git clone &lt;URL_REPOSITORY_GIT&gt;
+        <code class="text-green-400 left-[-30px] top-[0] relative">
+        git clone &lt;URL_REPOSITORY_GIT&gt;
 
-  cd &lt;folder-project&gt;
+        cd &lt;folder-project&gt;
 
-  <span class="text-gray-400"># jalankan docker compose</span>
-  docker compose up -d --build
+        <span class="text-gray-400"># jalankan docker compose</span>
+        docker compose up -d --build
 
-  <span class="text-gray-400"># buat .env</span>
-  copy .env.example menjadi .env
+        <span class="text-gray-400"># buat .env</span>
+        copy .env.example menjadi .env
 
-  <span class="text-gray-400"># Jalankan composer install & atur ownership</span>
-  docker exec app composer install --no-interaction --prefer-dist
-  sudo chown -R 33:33 storage bootstrap/cache
+        <span class="text-gray-400"># Jalankan composer install & atur ownership</span>
+        docker exec app composer install --no-interaction --prefer-dist
+        sudo chown -R 33:33 storage bootstrap/cache
 
-  <span class="text-gray-400"># jalankan app key generate dan migrasi & seeder</span>
-  docker exec app php artisan key:generate
-  docker exec app php artisan migrate --seed
+        <span class="text-gray-400"># jalankan app key generate dan migrasi & seeder</span>
+        docker exec app php artisan key:generate
+        docker exec app php artisan migrate --seed
 
-  <span class="text-gray-400"># Done ✅</span>
-  <span class="text-gray-400"># Jalankan pada postman / Insomnia base url http://localhost:8001</span>
-</code>
+        <span class="text-gray-400"># Done ✅</span>
+        <span class="text-gray-400"># Jalankan pada postman / Insomnia base url http://localhost:8001</span>
+        </code>
     </pre>
     <hr class="border-gray-700 my-4">
   </section>
 
   <section class="mb-6">
     <h2 class="text-2xl font-semibold mb-2">Struktur Folder</h2>
-    <pre class="bg-gray-800 p-4 rounded-md overflow-x-auto text-sm">
-    project-laravel/
-    ├── app/
-    ├── bootstrap/
-    ├── config/
-    ├── public/
-    ├── storage/
-    ├── docker/
-    │   └── nginx/
-    │       └── default.conf
-    ├── docker-compose.yml
-    ├── Dockerfile
-    ├── .env
-    └── README.md
+    <pre class="bg-gray-800 py-4 rounded-md overflow-x-auto text-sm">
+    <code class="left-[-5px] top-[0] relative">
+        project-laravel/
+        ├── app/
+        ├── bootstrap/
+        ├── config/
+        ├── public/
+        ├── storage/
+        ├── docker/
+        │   └── nginx/
+        │       └── default.conf
+        ├── docker-compose.yml
+        ├── Dockerfile
+        ├── .env
+        └── README.md
+    </code>
     </pre>
     <hr class="border-gray-700 my-4">
   </section>
 
     <section class="mb-6">
     <h2 class="text-2xl font-bold mb-2">🗄️ Konfigurasi Database</h2>
-    <pre class="bg-gray-800 py-2 rounded-lg overflow-x-auto relative">
+    <pre class="bg-gray-800 py-0 rounded-lg overflow-x-auto relative">
       <button class="absolute top-2 right-2 bg-gray-700 text-gray-100 px-2 py-1 rounded cursor-pointer text-sm hover:bg-gray-600" onclick="copyCode(this)">Copy</button>
-      <code class="text-green-400">
+      <code class="text-green-400 left-[-30px] top-[0] relative">
         DB_CONNECTION=pgsql
         DB_HOST=postgres
         DB_PORT=5432
@@ -123,30 +125,32 @@
   <section>
     <div class="mt-4 text-gray-300">
       <h2 class="text-2xl font-bold mb-2">👥 Dummy User untuk Login (Seed):</h2>
-      <pre class="bg-gray-800 py-[30px] px-[5px] rounded-lg overflow-x-auto text-green-400">
-        Manager
-        email: manager1@example.com
-        password: password
- 
-        Manager
-        email: manager2@example.com
-        password: password
+      <pre class="bg-gray-800 py-[30px] px-0 rounded-lg overflow-x-auto text-green-400">
+        <code class="text-green-400 left-[-65px] top-[0] relative">
+            <b class="text-gray-400">Manager</b>
+            email: manager1@example.com
+            password: password
+    
+            <b class="text-gray-400">Manager</b>
+            email: manager2@example.com
+            password: password
 
-        Engineer
-        email: engineer1@example.com
-        password: password
+            <b class="text-gray-400">Engineer</b>
+            email: engineer1@example.com
+            password: password
 
-        Engineer
-        email: engineer2@example.com
-        password: password
+            <b class="text-gray-400">Engineer</b>
+            email: engineer2@example.com
+            password: password
 
-        Engineer
-        email: engineer3@example.com
-        password: password
+            <b class="text-gray-400">Engineer</b>
+            email: engineer3@example.com
+            password: password
 
-        Engineer
-        email: engineer4@example.com
-        password: password
+            <b class="text-gray-400">Engineer</b>
+            email: engineer4@example.com
+            password: password
+        </code>
       </pre>
     </div>
     <hr class="border-gray-700 my-4">
