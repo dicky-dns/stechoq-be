@@ -6,4 +6,5 @@ enum IssueType: string
 {
     case Bug = 'bug';
     case Improvement = 'improvement';
+    case Task = 'task';
 }

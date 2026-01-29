@@ -20,7 +20,7 @@ class ProjectController extends Controller
     public function __construct()
     {
         $this->middleware(sprintf('permission:%s', Permission::ProjectView->value))->only(['index', 'show']);
-        $this->middleware(sprintf('permission:%s', Permission::ProjectCreate->value))->only(['store']);
+        $this->middleware(sprintf('permission:%s', Permission::ProjectCreate->value))->only(['store', 'update']);
     }
 
     public function index(Request $request)
@@ -52,6 +52,19 @@ class ProjectController extends Controller
 
             return $this->sendJsonResponse([
                 'message' => 'Succesfully save data',
+            ]);
+        } catch (\Throwable $throwable) {
+            throw new JsonResponseException($throwable->getMessage(), (int) $throwable->getCode());
+        }
+    }
+
+    public function update(ProjectRequest $request, Project $project)
+    {
+        try {
+            dispatch_sync(new SaveProject($project, $request->getData()));
+
+            return $this->sendJsonResponse([
+                'message' => 'Succesfully update data',
             ]);
         } catch (\Throwable $throwable) {
             throw new JsonResponseException($throwable->getMessage(), (int) $throwable->getCode());

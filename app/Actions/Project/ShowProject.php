@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Actions\Project;
 
 use App\Actions\AbstractAction;
-use App\Domains\User\Models\User;
 use App\Exceptions\ProjectException;
 use App\Models\Project;
+use App\Models\User;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Support\Facades\Auth;
 

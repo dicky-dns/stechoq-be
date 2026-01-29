@@ -11,7 +11,7 @@ Route::as('api.')->group(function (): void {
 
     Route::middleware('auth:sanctum')->group(function (): void {
         Route::post('/auth/logout', [AuthController::class, 'logout']);
-        Route::apiResource('/projects', ProjectController::class)->except(['update', 'destroy']);
+        Route::apiResource('/projects', ProjectController::class)->except(['destroy']);
         Route::apiResource('/issues', IssueController::class)->except(['destroy']);
         Route::apiResource('/reports', ReportController::class)->only(['index']);
     });
