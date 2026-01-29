@@ -15,11 +15,6 @@ class Project extends Model
         'status',
     ];
 
-    protected $casts = [
-        'start_date' => 'date',
-        'end_date' => 'date',
-    ];
-
     public function manager()
     {
         return $this->belongsTo(User::class, 'manager_id');

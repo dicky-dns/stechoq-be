@@ -18,7 +18,7 @@ class ProjectRepository extends AbstractRepository
 
     protected ?array $sortableColumns = ['name', 'start_date', 'end_date', 'status', 'created_at'];
 
-    protected string $sortColumn = 'name';
+    protected string $sortColumn = 'id';
 
     public function __construct(protected ?CriteriaInterface $criteria = null)
     {

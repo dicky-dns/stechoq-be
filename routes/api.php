@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::as('api.')->group(function (): void {
@@ -14,5 +15,6 @@ Route::as('api.')->group(function (): void {
         Route::apiResource('/projects', ProjectController::class)->except(['destroy']);
         Route::apiResource('/issues', IssueController::class)->except(['destroy']);
         Route::apiResource('/reports', ReportController::class)->only(['index']);
+        Route::apiResource('/users', UserController::class)->only(['index']);
     });
 });

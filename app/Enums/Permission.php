@@ -6,6 +6,7 @@ namespace App\Enums;
 
 enum Permission: string
 {
+    case UserView = 'user.view';
     case ProjectView = 'project.view';
     case ProjectCreate = 'project.create';
     case IssueView = 'issue.view';
