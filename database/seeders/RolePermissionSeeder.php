@@ -39,6 +39,7 @@ class RolePermissionSeeder extends Seeder
             PermissionEnums::IssueView->value,
             PermissionEnums::IssueUpdate->value,
             PermissionEnums::ReportView->value,
+            PermissionEnums::UserView->value,
         ]);
     }
 }
