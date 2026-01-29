@@ -107,9 +107,6 @@
         ├── config/
         ├── public/
         ├── storage/
-        ├── docker/
-        │   └── nginx/
-        │       └── default.conf
         ├── docker-compose.yml
         ├── Dockerfile
         ├── .env
